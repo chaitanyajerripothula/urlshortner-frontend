@@ -11,16 +11,30 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      shorturl: '#',
+      shorturl: '',
+      message:undefined
     };
     this.UrlManager = UrlManager();
   }
 
   handleSubmit = async originalurl => {
     const res = await this.UrlManager.getShortUrl(originalurl);
-    this.setState({
+   this.setState({
+        message :undefined
+      },()=>{
+if(res.status) {
+       console.log(res);
+      this.setState({
+        message :res.msg
+      })
+    }else{
+this.setState({
       shorturl: res.shortenUrl,
     });
+    }
+      })
+    
+    
   };
 
   render() {
@@ -40,6 +54,7 @@ export default class App extends Component {
             }}
           >
             <ConverterComponent
+              message= {this.state.message}
               shorturl={this.state.shorturl}
               handleSubmit={this.handleSubmit}
             />
