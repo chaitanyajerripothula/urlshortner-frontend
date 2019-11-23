@@ -79,7 +79,7 @@ class ConverterComponent extends Component {
                 style={{ alignSelf: 'flex-end' }}
                 onClick={this._handleClick}
               >
-                Secondary
+                Generate URL
               </Button>
             </div>
             <div style={{alignSelf:"flex-start",flex:"4",width:"100%",margin:"5%"}}>
